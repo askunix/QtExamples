@@ -1,5 +1,4 @@
 // Unique.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
 
 #include <iostream>
 #include <string>
@@ -8,9 +7,9 @@
 #include <set>
 using namespace std;
 
-/* ¶ÔÓ¦½Ì³Ì
- * STL ÖĞ¸ø vector È¥ÖØµÄÈıÖÖ·½·¨: https://xmuli.blog.csdn.net/article/details/126322011
- * STL µÄ std::set ´´½¨×Ô¶¨Òå½á¹¹ÌåµÄ¶ÔÏó£¬¶¨ÒåÑÏ¸ñÈõĞòµÄ±È½Ïº¯Êı: https://xmuli.blog.csdn.net/article/details/126354597
+/* å¯¹åº”æ•™ç¨‹
+ * STL ä¸­ç»™ vector å»é‡çš„ä¸‰ç§æ–¹æ³•: https://xmuli.blog.csdn.net/article/details/126322011
+ * STL çš„ std::set åˆ›å»ºè‡ªå®šä¹‰ç»“æ„ä½“çš„å¯¹è±¡ï¼Œå®šä¹‰ä¸¥æ ¼å¼±åºçš„æ¯”è¾ƒå‡½æ•°: https://xmuli.blog.csdn.net/article/details/126354597
 */ 
 
 struct MyData
@@ -18,13 +17,13 @@ struct MyData
     wstring name;
     wstring md5;
 
-    // ·½Ê½Ò»£ºÖØÔØÀà < º¯Êı
+    // æ–¹å¼ä¸€ï¼šé‡è½½ç±» < å‡½æ•°
     //bool operator<(const MyData& d) const noexcept {
     //    return md5 < d.md5;
     //}
 };
 
-// ·½Ê½¶ş£º¶Ô×Ô¶¨Òå½á¹¹ÌåÀàĞÍ£¬×Ô¶¨Òå±È½Ïº¯Êı _Pr ¡¾±¾´Î²ÉÓÃµÄ·½Ê½¡¿
+// æ–¹å¼äºŒï¼šå¯¹è‡ªå®šä¹‰ç»“æ„ä½“ç±»å‹ï¼Œè‡ªå®šä¹‰æ¯”è¾ƒå‡½æ•° _Pr ã€æœ¬æ¬¡é‡‡ç”¨çš„æ–¹å¼ã€‘
 bool cmpSort(const MyData& d1, const MyData& d2) {
     // Simple example
     return d1.md5 < d2.md5;
@@ -36,12 +35,12 @@ bool cmpSort(const MyData& d1, const MyData& d2) {
     //    return d1.name < d2.name;
 };
 
-// ·½Ê½¶ş±äÖÖ£ºÍ¬¶ş£¬µ«²ÉÓÃ Lambda ±í´ïÊ½£¨Ä³Ğ©²¿·ÖËã·¨ÖĞ»áÊ§Ğ§£©
+// æ–¹å¼äºŒå˜ç§ï¼šåŒäºŒï¼Œä½†é‡‡ç”¨ Lambda è¡¨è¾¾å¼ï¼ˆæŸäº›éƒ¨åˆ†ç®—æ³•ä¸­ä¼šå¤±æ•ˆï¼‰
 auto cmpSortLambda = [](const MyData& d1, const MyData& d2) {
     return d1.md5 < d2.md5;
 };
 
-// ·½Ê½Èı£ºº¯Êı¶ÔÏó£¬ÂÔ¡£¸üĞÂ£¬±¾À´ÊÇĞ´ÁËÂÔµÄ£¬½á¹ûÒâÍâ´Ë´¦ÓĞÒâÍâµÄÊÕ»ñ
+// æ–¹å¼ä¸‰ï¼šå‡½æ•°å¯¹è±¡ï¼Œç•¥ã€‚æ›´æ–°ï¼Œæœ¬æ¥æ˜¯å†™äº†ç•¥çš„ï¼Œç»“æœæ„å¤–æ­¤å¤„æœ‰æ„å¤–çš„æ”¶è·
 struct cmpSortObj
 {
     bool operator()(const MyData& d1, const MyData& d2) const {
@@ -49,10 +48,10 @@ struct cmpSortObj
     }
 };
 
-// ************* std::unique µÄ×Ô¶¨Òå±È½Ïº¯Êı *************
+// ************* std::unique çš„è‡ªå®šä¹‰æ¯”è¾ƒå‡½æ•° *************
 bool cmpUnique(const MyData& d1, const MyData& d2) {
-    return d1.md5 == d2.md5;                             // ·ÇÑÏ¸ñ¶ÔÏóÏàµÈ£¬¿ÉÒÔ´ïµ½Ä¿±ê£¬µ«»áÄÚ´æĞ¹Â©
-    //return d1.md5 == d2.md5 && d1.name == d2.name;     // Âú×ãÓï·¨ºÍ±àÒë£¬µ«²»Âú×ãÊµ¼ÊĞèÇó
+    return d1.md5 == d2.md5;                             // éä¸¥æ ¼å¯¹è±¡ç›¸ç­‰ï¼Œå¯ä»¥è¾¾åˆ°ç›®æ ‡ï¼Œä½†ä¼šå†…å­˜æ³„æ¼
+    //return d1.md5 == d2.md5 && d1.name == d2.name;     // æ»¡è¶³è¯­æ³•å’Œç¼–è¯‘ï¼Œä½†ä¸æ»¡è¶³å®é™…éœ€æ±‚
 };
 
 int main()
@@ -63,28 +62,28 @@ int main()
                            { L"b2.exe", L"C96D1AA5D314954417C28A645ED72665"} };
 
     wcout.imbue(locale("", LC_CTYPE));
-    wcout << L"----------µ÷ÕûÇ°--------" << endl;
+    wcout << L"----------è°ƒæ•´å‰--------" << endl;
     for (const auto& it : vec)
         wcout << L"[it.name]" << it.name << L"[it.md5]" << it.md5 << endl;
 
-    // ************* ¡ºÒ»¡»vector, sort + unique *************
+    // ************* ã€ä¸€ã€vector, sort + unique *************
     //sort(vec.begin(), vec.end(), cmpSort);
     //auto ite = std::unique(vec.begin(), vec.end(), cmpUnique);
     //vec.erase(ite, vec.end());
 
-    // ************* ¡º¶ş¡»vector + set£¨ÊÖ¶¯¸³Öµ£© *************
-    //set<MyData, cmpSortObj>  s;                           // "º¯Êı¶ÔÏó"´´½¨ set ¶ÔÏó --> OK
-    set<MyData, decltype(cmpSort)*>  s(&cmpSort);           // "¶¨ÒåÆÕÍ¨º¯Êı + decltype"´´½¨ set ¶ÔÏó -->    OK:  ±àÒë¡¢ÔËĞĞ³É¹¦£»µ÷ÊÔÒ²³É¹¦
-    //set<MyData, decltype(cmpSort)*>  s;                   //                                      --> Error:  ±àÒë¡¢ÔËĞĞ³É¹¦£»µ÷ÊÔ»áÊ§°Ü
+    // ************* ã€äºŒã€vector + setï¼ˆæ‰‹åŠ¨èµ‹å€¼ï¼‰ *************
+    //set<MyData, cmpSortObj>  s;                           // "å‡½æ•°å¯¹è±¡"åˆ›å»º set å¯¹è±¡ --> OK
+    set<MyData, decltype(cmpSort)*>  s(&cmpSort);           // "å®šä¹‰æ™®é€šå‡½æ•° + decltype"åˆ›å»º set å¯¹è±¡ -->    OK:  ç¼–è¯‘ã€è¿è¡ŒæˆåŠŸï¼›è°ƒè¯•ä¹ŸæˆåŠŸ
+    //set<MyData, decltype(cmpSort)*>  s;                   //                                      --> Error:  ç¼–è¯‘ã€è¿è¡ŒæˆåŠŸï¼›è°ƒè¯•ä¼šå¤±è´¥
 
     for (unsigned i = 0; i < vec.size(); ++i)
-        s.insert(vec[i]);                                   // ±àÒëÊ±£¬±¾ĞĞ¿ÉÑéÖ¤ÉÏÃæ´´½¨ std::set µÄ½á¹û
+        s.insert(vec[i]);                                   // ç¼–è¯‘æ—¶ï¼Œæœ¬è¡Œå¯éªŒè¯ä¸Šé¢åˆ›å»º std::set çš„ç»“æœ
     vec.assign(s.begin(), s.end());
 
-    // ************* ¡ºÈı¡»vector + set£¨¹¹Ôìº¯Êı£© *************
-    // Ğ§ÂÊ²»Èç¡º¶ş¡»£¬¹ÊÂÔ
+    // ************* ã€ä¸‰ã€vector + setï¼ˆæ„é€ å‡½æ•°ï¼‰ *************
+    // æ•ˆç‡ä¸å¦‚ã€äºŒã€ï¼Œæ•…ç•¥
 
-    wcout << L"----------µ÷Õûºó--------" << endl;
+    wcout << L"----------è°ƒæ•´å--------" << endl;
     for (const auto& it : vec)
         wcout << L"[it.name]" << it.name << L"[it.md5]" << it.md5 << endl;
 
